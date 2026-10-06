@@ -592,6 +592,7 @@ function bot_guess(bot_array, bot_guess_array) {
         bot_guess_array = choose_new_guess(bot_array);
         i++;
     }
+    i++;
     console.log(bot_guess_array);///////
     console.log("The bot took *" + i + "* attempts");//////
 }
