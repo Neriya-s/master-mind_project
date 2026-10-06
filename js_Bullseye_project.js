@@ -1,7 +1,7 @@
 
-//parseInt(prompt("dfgh"))//двгшъ ощърд щтшле деа тшк осфшй c#
-//"\n"//мшгъ щешд бдъшад
-//.push(5)//мдесйу айбш мотшк
+//parseInt(prompt("dfgh"))//Г¤ГўГЈГёГє Г®Г№ГєГ°Г¤ Г№ГІГёГ«ГҐ Г¤ГҐГ  ГІГёГЄ Г®Г±ГґГёГ© c#
+//"\n"//Г¬ГёГЈГє Г№ГҐГёГ¤ ГЎГ¤ГєГёГ Г¤
+//.push(5)//Г¬Г¤ГҐГ±Г©Гі Г Г©ГЎГё Г¬Г®ГІГёГЄ
 
 const title_div = document.getElementById("title");
 const input_div = document.getElementById("input");
@@ -43,7 +43,7 @@ function build_home() {
     the_code_div.innerHTML = "";
     input_div.innerHTML = "";
     input_div.style.display = "none";
-    container_div.innerHTML = "";//оезч аъ дмез дчегн
+    container_div.innerHTML = "";//Г®ГҐГ§Г· Г Гє Г¤Г¬ГҐГ§ Г¤Г·ГҐГЈГ­
     container_div.style.display = "none";
 
 }
@@ -65,12 +65,12 @@ function build_bord() {
 
     temp_code = new Array(code_length);
 
-    //овмд аъ лфъеш дзжеш
+    //Г®ГўГ¬Г¤ Г Гє Г«ГґГєГҐГё Г¤Г§Г¦ГҐГё
     back_button_div.style.display = "";
 
-    //йецш отшк ммез дощзч
+    //Г©ГҐГ¶Гё Г®ГІГёГЄ Г¬Г¬ГҐГ§ Г¤Г®Г№Г§Г·
 
-    array_bord = new Array(num_tries);//овгйш отшк мвегм дощзч
+    array_bord = new Array(num_tries);//Г®ГўГЈГ©Гё Г®ГІГёГЄ Г¬ГўГҐГЈГ¬ Г¤Г®Г№Г§Г·
 
     for (let r = 0; r < array_bord.length; r++) {
         array_bord[r] = new Array(code_length)
@@ -79,17 +79,17 @@ function build_bord() {
         }
     }
 
-    container_div.innerHTML = "";//оезч аъ дмез дчегн
-    //йецш аъ длфъешйн ммез дощзч
+    container_div.innerHTML = "";//Г®ГҐГ§Г· Г Гє Г¤Г¬ГҐГ§ Г¤Г·ГҐГЈГ­
+    //Г©ГҐГ¶Гё Г Гє Г¤Г«ГґГєГҐГёГ©Г­ Г¬Г¬ГҐГ§ Г¤Г®Г№Г§Г·
     for (let i = 0; i < num_tries; i++) {
         create_row(i);
     }
     container_div.style.display = "";
 
-    //йецш отшк мчег
+    //Г©ГҐГ¶Гё Г®ГІГёГЄ Г¬Г·ГҐГЈ
     array_code = new Array(code_length);
 
-    // бзйшд ан дчег йдйд шргеомй ае йгрй тм йгй лфъешйн
+    // ГЎГ§Г©ГёГ¤ Г Г­ Г¤Г·ГҐГЈ Г©Г¤Г©Г¤ ГёГ°ГЈГҐГ®Г¬Г© Г ГҐ Г©ГЈГ°Г© ГІГ¬ Г©ГЈГ© Г«ГґГєГҐГёГ©Г­
     let choose = "<button onclick='choose_random()' class='random_button'>";
     choose = choose + "random";
     choose = choose + "</button>";
@@ -99,27 +99,27 @@ function build_bord() {
     the_code_div.innerHTML = choose;
 
 
-    //оезч аъ длеъшъ длфъеш еддвгшеъ
+    //Г®ГҐГ§Г· Г Гє Г¤Г«ГҐГєГёГє Г¤Г«ГґГєГҐГё ГҐГ¤Г¤ГўГЈГёГҐГє
     title_div.style.display = "none";
     start_button_div.style.display = "none";
     settings_container.style.display = "none";
 
-    //йецш аъ бзйшъ дцбт
+    //Г©ГҐГ¶Гё Г Гє ГЎГ§Г©ГёГє Г¤Г¶ГЎГІ
     create_color_selection(number_colors);
     input_div.style = "";
 
     set_color(0, document.getElementById("10000"));
 }
 
-//очбм осфш ейецш аъ дщешд щм досфш
+//Г®Г·ГЎГ¬ Г®Г±ГґГё ГҐГ©ГҐГ¶Гё Г Гє Г¤Г№ГҐГёГ¤ Г№Г¬ Г¤Г®Г±ГґГё
 function create_row(row_num) {
 
     let button_color = "<div id='row" + row_num + "' class='row_container'>";
-    //йецш аъ длфъешйн мъщебеъ
+    //Г©ГҐГ¶Гё Г Гє Г¤Г«ГґГєГҐГёГ©Г­ Г¬ГєГ№ГҐГЎГҐГє
     idnum = 1000 + (row_num * code_length);
 
     button_color += "<div id='row_answers" + row_num + "' class='row_answers'>";
-    if (row_num < 9)//оесйу ъеейн бмъй ршад лгай щдщешеъ йдйе осегшеъ
+    if (row_num < 9)//Г®ГҐГ±Г©Гі ГєГҐГҐГ©Г­ ГЎГ¬ГєГ© Г°ГёГ Г¤ Г«ГЈГ Г© Г№Г¤Г№ГҐГёГҐГє Г©Г¤Г©ГҐ Г®Г±ГҐГЈГёГҐГє
         button_color += "<span>\u00A0\u00A0</span>";
     button_color += (row_num+1);
     button_color += ".";
@@ -131,11 +131,11 @@ function create_row(row_num) {
     }
     button_color += "</div>";
 
-    //йецш аъ длфъешйн ммез дощзч
+    //Г©ГҐГ¶Гё Г Гє Г¤Г«ГґГєГҐГёГ©Г­ Г¬Г¬ГҐГ§ Г¤Г®Г№Г§Г·
     idnum = 0 + (row_num * code_length);
 
     button_color += "<div id='row_guesses" + row_num + "' class='row_guesses'>";
-    if (row_num < 9)//оесйу ъеейн бмъй ршад лгай щдщешеъ йдйе осегшеъ
+    if (row_num < 9)//Г®ГҐГ±Г©Гі ГєГҐГҐГ©Г­ ГЎГ¬ГєГ© Г°ГёГ Г¤ Г«ГЈГ Г© Г№Г¤Г№ГҐГёГҐГє Г©Г¤Г©ГҐ Г®Г±ГҐГЈГёГҐГє
         button_color += "<span>\u00A0\u00A0</span>";
     button_color += (row_num + 1);
     button_color += ".";
@@ -148,7 +148,7 @@ function create_row(row_num) {
         idnum++;
     }
 
-    //йецш аъ длфъеш мдвщд
+    //Г©ГҐГ¶Гё Г Гє Г¤Г«ГґГєГҐГё Г¬Г¤ГўГ№Г¤
     let id_submit = 500 + row_num;
 
     button_color += "<button id='" + id_submit.toString() + "' onclick='submit(this)' class='button_submit_disabled' disabled>";
@@ -172,7 +172,7 @@ function create_color_selection(number_of_colors) {
     input_div.innerHTML = color_pick;
 }
 
-//ощрд аъ цбт длфъеш мфй досфш щдощъощ безш
+//Г®Г№Г°Г¤ Г Гє Г¶ГЎГІ Г¤Г«ГґГєГҐГё Г¬ГґГ© Г¤Г®Г±ГґГё Г№Г¤Г®Г№ГєГ®Г№ ГЎГҐГ§Гё
 let corrant_button = "10000";
 let pre_button = "10000";
 function set_color(num_select, selected_button) {
@@ -186,19 +186,19 @@ function set_color(num_select, selected_button) {
     }
 }
 
-//ощрд аъ отшк мез дощзч блм фтн щмезцйн тм лфъеш рйзещ(щзеш)
+//Г®Г№Г°Г¤ Г Гє Г®ГІГёГЄ Г¬ГҐГ§ Г¤Г®Г№Г§Г· ГЎГ«Г¬ ГґГІГ­ Г№Г¬ГҐГ§Г¶Г©Г­ ГІГ¬ Г«ГґГєГҐГё Г°Г©Г§ГҐГ№(Г№Г§ГҐГё)
 function change_array(button) {
     let co = color_selected_num;
     document.getElementById(button.id).style.backgroundColor = color[co];
     document.getElementById(button.id).style.border = "2px solid black";
 
-    // let r = Math.floor(button.id / code_length);//айжд щешд/айфд биеш
-    let c = button.id % code_length;//айжд иеш/айфд бщешд
+    // let r = Math.floor(button.id / code_length);//Г Г©Г¦Г¤ Г№ГҐГёГ¤/Г Г©ГґГ¤ ГЎГЁГҐГё
+    let c = button.id % code_length;//Г Г©Г¦Г¤ ГЁГҐГё/Г Г©ГґГ¤ ГЎГ№ГҐГёГ¤
 
     array_bord[try_counter][c] = co;
 }
 
-//очбм отшк рлеп еотшк щм рйзещ еозжйш лод "бем" йщ
+//Г®Г·ГЎГ¬ Г®ГІГёГЄ Г°Г«ГҐГЇ ГҐГ®ГІГёГЄ Г№Г¬ Г°Г©Г§ГҐГ№ ГҐГ®Г§Г¦Г©Гё Г«Г®Г¤ "ГЎГҐГ¬" Г©Г№
 function count_bull(arr_code_org,arr_code_guess) {
 
     let temp_bull_code = new Array(code_length);
@@ -222,7 +222,7 @@ function count_bull(arr_code_org,arr_code_guess) {
     return bull;
 }
 
-//очбм отшк рлеп еотшк щм рйзещ еозжйш лод "бем фвйтд" йщ
+//Г®Г·ГЎГ¬ Г®ГІГёГЄ Г°Г«ГҐГЇ ГҐГ®ГІГёГЄ Г№Г¬ Г°Г©Г§ГҐГ№ ГҐГ®Г§Г¦Г©Гё Г«Г®Г¤ "ГЎГҐГ¬ ГґГўГ©ГІГ¤" Г©Г№
 function count_bullseye(arr_code_org, arr_code_guess) {
 
     let bullseye = 0;
@@ -239,24 +239,24 @@ function submit(button_submit) {
     let submit_id = Number(button_submit.id);
     let try_num = submit_id - 500;
 
-    if (is_array_full(array_bord[try_num])) {//бегч ан дощъощ ойма аъ лм дчег
+    if (is_array_full(array_bord[try_num])) {//ГЎГҐГЈГ· Г Г­ Г¤Г®Г№ГєГ®Г№ Г®Г©Г¬Г  Г Гє Г«Г¬ Г¤Г·ГҐГЈ
 
         let bull = count_bull(array_code, array_bord[try_num])
         let bullseye = count_bullseye(array_code, array_bord[try_num])
 
-        disable_row(try_num);//обим аъ дщешд дрелзйъ
+        disable_row(try_num);//Г®ГЎГЁГ¬ Г Гє Г¤Г№ГҐГёГ¤ Г¤Г°ГҐГ«Г§Г©Гє
 
-        if (bullseye == code_length)//бегч ан йщ рйцзеп
+        if (bullseye == code_length)//ГЎГҐГЈГ· Г Г­ Г©Г№ Г°Г©Г¶Г§ГҐГЇ
             win();
-        else if (try_num < num_tries - 1)//бегч ан жд ма лфъеш ддвщд дазшеп
-            activate_row(try_num + 1);//офтйм аъ дщешд дбад
+        else if (try_num < num_tries - 1)//ГЎГҐГЈГ· Г Г­ Г¦Г¤ Г¬Г  Г«ГґГєГҐГё Г¤Г¤ГўГ№Г¤ Г¤Г Г§ГёГҐГЇ
+            activate_row(try_num + 1);//Г®ГґГІГ©Г¬ Г Гє Г¤Г№ГҐГёГ¤ Г¤ГЎГ Г¤
         else
             lose();
 
 
 
 
-        //ощрд аъ дцбт щм длфъешйн щм дъщебеъ мфй "бем" е"бем фвйтд"
+        //Г®Г№Г°Г¤ Г Гє Г¤Г¶ГЎГІ Г№Г¬ Г¤Г«ГґГєГҐГёГ©Г­ Г№Г¬ Г¤ГєГ№ГҐГЎГҐГє Г¬ГґГ© "ГЎГҐГ¬" ГҐ"ГЎГҐГ¬ ГґГўГ©ГІГ¤"
         for (let i = 0; i < code_length; i++) {
             let button_answer_id = 1000 + i + code_length * try_num;
             let button_answer = document.getElementById(button_answer_id);
@@ -304,30 +304,29 @@ function choose_random() {//
 }
 
 function random_code_unique() {
-    //йецш отшк щм дайргчсйн щм дцбтйн
+    //Г©ГҐГ¶Гё Г®ГІГёГЄ Г№Г¬ Г¤Г Г©Г°ГЈГ·Г±Г©Г­ Г№Г¬ Г¤Г¶ГЎГІГ©Г­
     let num_for_colors = new Array(number_colors);
     for (let i = 0; i < num_for_colors.length; i++) {
         num_for_colors[i] = i;
     }
-    //отшбб аъ дотшк
+    //Г®ГІГёГЎГЎ Г Гє Г¤Г®ГІГёГЄ
     scramble_array(num_for_colors);
 
-    //ощеед аъ дчег мсфшеъ дшащереъ щм дотшк дотешбб
+    //Г®Г№ГҐГҐГ¤ Г Гє Г¤Г·ГҐГЈ Г¬Г±ГґГёГҐГє Г¤ГёГ Г№ГҐГ°ГҐГє Г№Г¬ Г¤Г®ГІГёГЄ Г¤Г®ГІГҐГёГЎГЎ
     for (let i = 0; i < code_length; i++) {
         array_code[i] = num_for_colors[i];
     }
 
-    //йецш ййцев щм дчег
+    //Г©ГҐГ¶Гё Г©Г©Г¶ГҐГў Г№Г¬ Г¤Г·ГҐГЈ
     create_code_template()
 
-    //офтйм аъ дщешд дшащерд
+    //Г®ГґГІГ©Г¬ Г Гє Г¤Г№ГҐГёГ¤ Г¤ГёГ Г№ГҐГ°Г¤
     activate_row(0)
 
-    console.log(array_code)
 }
 
 function random_code_duplicates() {
-    //овгйш чег шргеомй ботшк
+    //Г®ГўГЈГ©Гё Г·ГҐГЈ ГёГ°ГЈГҐГ®Г¬Г© ГЎГ®ГІГёГЄ
 
     let color_code_num;
     for (let i = 0; i < code_length; i++) {
@@ -335,19 +334,17 @@ function random_code_duplicates() {
         array_code[i] = color_code_num;
     }
 
-    //йецш ййцев щм дчег
+    //Г©ГҐГ¶Гё Г©Г©Г¶ГҐГў Г№Г¬ Г¤Г·ГҐГЈ
     create_code_template()
 
-    //офтйм аъ дщешд дшащерд
+    //Г®ГґГІГ©Г¬ Г Гє Г¤Г№ГҐГёГ¤ Г¤ГёГ Г№ГҐГ°Г¤
     activate_row(0)
 
-
-    console.log(array_code)
 }
 
 function manual_code() {
 
-    //йецш лфъеш щдощъощ ожйп бе аъ дчег
+    //Г©ГҐГ¶Гё Г«ГґГєГҐГё Г№Г¤Г®Г№ГєГ®Г№ Г®Г¦Г©ГЇ ГЎГҐ Г Гє Г¤Г·ГҐГЈ
     idnum = 200;
     let button_color_code = "enter code:";
     for (let c = 0; c < code_length; c++) {
@@ -383,15 +380,13 @@ function manual_color_pick_submit() {
             array_code[i] = temp_code[i]
         }
 
-        //йецш ъцевд щм аешк дчег
+        //Г©ГҐГ¶Гё ГєГ¶ГҐГўГ¤ Г№Г¬ Г ГҐГёГЄ Г¤Г·ГҐГЈ
         create_code_template();
 
-        //офтйм аъ дщешд дшащерд
+        //Г®ГґГІГ©Г¬ Г Гє Г¤Г№ГҐГёГ¤ Г¤ГёГ Г№ГҐГ°Г¤
         activate_row(0)
 
         set_color(0, document.getElementById("10000"));
-
-        console.log(array_code)
     }
 }
 
@@ -399,7 +394,7 @@ function manual_color_pick_submit() {
 //////////////////////////////////////////
 //////////////////////////////////////////
 
-//отшбб отшк
+//Г®ГІГёГЎГЎ Г®ГІГёГЄ
 function scramble_array(array) {
     for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -407,12 +402,12 @@ function scramble_array(array) {
     }
 }
 
-//озжйш осфш щмн бйп ойрйоен мочсйоен лемм дчцееъ
+//Г®Г§Г¦Г©Гё Г®Г±ГґГё Г№Г¬Г­ ГЎГ©ГЇ Г®Г©Г°Г©Г®ГҐГ­ Г¬Г®Г·Г±Г©Г®ГҐГ­ Г«ГҐГ¬Г¬ Г¤Г·Г¶ГҐГҐГє
 function random_int(min,max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-//бегч ан отшк ома
+//ГЎГҐГЈГ· Г Г­ Г®ГІГёГЄ Г®Г¬Г 
 function is_array_full(array_to_check) {
     for (let i = 0; i < array_to_check.length; i++) {
         if (array_to_check[i] == null)
@@ -421,7 +416,7 @@ function is_array_full(array_to_check) {
     return true;
 }
 
-//офтйм щешд щм рйзещ
+//Г®ГґГІГ©Г¬ Г№ГҐГёГ¤ Г№Г¬ Г°Г©Г§ГҐГ№
 function activate_row(num_of_row) {
     let current_submit = document.getElementById(500 + num_of_row);
     current_submit.className = "button_submit";
@@ -441,7 +436,7 @@ function activate_row(num_of_row) {
     }
 }
 
-//обим щешд щм рйзещ
+//Г®ГЎГЁГ¬ Г№ГҐГёГ¤ Г№Г¬ Г°Г©Г§ГҐГ№
 function disable_row(num_of_row) {
     let current_submit = document.getElementById(500 + num_of_row);
     current_submit.className = "button_submit_disabled";
@@ -460,7 +455,7 @@ function disable_row(num_of_row) {
     }
 }
 
-//йецш ъцевд щм аешк дчег
+//Г©ГҐГ¶Гё ГєГ¶ГҐГўГ¤ Г№Г¬ Г ГҐГёГЄ Г¤Г·ГҐГЈ
 function create_code_template() {
     idnum = 200;
     let button_color_code = "the code:";
@@ -473,7 +468,7 @@ function create_code_template() {
     the_code_div.innerHTML = button_color_code;
 }
 
-//оцйв аъ дчег дрлеп
+//Г®Г¶Г©Гў Г Гє Г¤Г·ГҐГЈ Г¤Г°Г«ГҐГЇ
 function reveal_code() {
     for (let i = 0; i < array_code.length; i++) {
         let code_id = i + 200;
@@ -502,8 +497,8 @@ function show_error(error_string) {
 
 
 let bot_array
-let num_color_bot = number_colors;//(n <= 9) for dup// блод цбтйн щерйн дбеи йлем мдщъощ
-    // code_length <= 7 for dup// од аешк дчег
+let num_color_bot = number_colors;//(n <= 9) for dup// ГЎГ«Г®Г¤ Г¶ГЎГІГ©Г­ Г№ГҐГ°Г©Г­ Г¤ГЎГҐГЁ Г©Г«ГҐГ¬ Г¬Г¤Г№ГєГ®Г№
+    // code_length <= 7 for dup// Г®Г¤ Г ГҐГёГЄ Г¤Г·ГҐГЈ
 
 function bot_create_array_uniqe() {
 
@@ -559,7 +554,7 @@ function bot_possabilities_array_duplicates(bot_array) {
 function array_increase(array) {
 
     for (let i = 0; i <array.length; i++) {
-        if (array[i] != num_color_bot - 1) {//д-1 бвмм щдцбтйн дн мфй айргчс щоъзйм о0 едощърд оййцв аъ аешк отшк афщшейеъ дцбтйн
+        if (array[i] != num_color_bot - 1) {//Г¤-1 ГЎГўГ¬Г¬ Г№Г¤Г¶ГЎГІГ©Г­ Г¤Г­ Г¬ГґГ© Г Г©Г°ГЈГ·Г± Г№Г®ГєГ§Г©Г¬ Г®0 ГҐГ¤Г®Г№ГєГ°Г¤ Г®Г©Г©Г¶Гў Г Гє Г ГҐГёГЄ Г®ГІГёГЄ Г ГґГ№ГёГҐГ©ГҐГє Г¤Г¶ГЎГІГ©Г­
             array[i]++;
             break;
         }
@@ -585,7 +580,7 @@ function guess_duplicates() {
 function bot_guess(bot_array, bot_guess_array) {
 
     let i = 0;
-    while (count_bullseye(array_code, bot_guess_array)!=code_length) {//лм осфш дбем-фвйтд ма щеед маешк дчег
+    while (count_bullseye(array_code, bot_guess_array)!=code_length) {//Г«Г¬ Г®Г±ГґГё Г¤ГЎГҐГ¬-ГґГўГ©ГІГ¤ Г¬Г  Г№ГҐГҐГ¤ Г¬Г ГҐГёГЄ Г¤Г·ГҐГЈ
 
         bulls_bot = count_bull(array_code, bot_guess_array)
         bullseyes_bot = count_bullseye(array_code, bot_guess_array)
