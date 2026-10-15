@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -47,13 +47,13 @@
             border-radius:10%;
             border:2px solid black;
         }
-        .start_button {
+        .start_button_container {
             display: flex;
             justify-content: center;
             align-items: center;
         }
-        #start_button {
-            width: 200px;
+        .start_button {
+            width: 400px;
             height: 100px;
             font-size: 50px;
             border-radius: 12px;
@@ -61,8 +61,9 @@
             box-shadow: 5px 7px 5px gray;
             cursor: pointer;
             display: block;
+            margin:auto;
         }
-            #start_button:hover {
+            .start_button:hover {
                 background-color: lightblue;
                 color: darkblue;
                 box-shadow: 5px 7px 10px gray;
@@ -79,14 +80,15 @@
             border:3px solid black;
             cursor:default;
         }
-        #container {
+        .container {
             display: grid;
             gap: 1em;
             position: relative;
-            color: blue;
             font-size: 40px;
-            width: 100%;
+            min-width:100%;
+            width:max-content;
             min-height: 50%;
+            overflow:auto;
         }
         .range {
             -webkit-appearance: none;
@@ -137,17 +139,21 @@
         }
         .row_container {
             text-align: center;
-            display: grid;
+            display:inline-block;
             grid-template-columns: 1fr 1fr;
             font-size: 70px;
         }
         .row_answers {
+            display:inline-block;
             color: white;
             font-size: 40px;
+            width:fit-content;
         }
         .row_guesses {
+            display: inline-block;
             color: white;
             font-size: 70px;
+            width: fit-content;
         }
         .select_color {
             width: 50px;
@@ -401,9 +407,12 @@
     <div id="input"></div>
     <button id="back_button" onclick="build_home()" class="back_button" style="display:none"></button>
     <br />
-    <div class="start_button">
-        <button id="start_button" onclick="build_bord()">
-            start
+    <div id="start_button_container" class="start_button_container">
+        <button id="start_button" class="start_button" onclick="build_bord()">
+            single player
+        </button>
+        <button class="start_button" onclick="bot_build_bord()">
+            PVE
         </button>
     </div>
     <br />
@@ -412,7 +421,8 @@
     </div>
     <br />
     <br />
-    <div id="container"></div>
+    <div id="container" class="container"></div>
+
     <div id="settings_container">
         <div style="position:absolute;left:4%;">
             <span class="center_horizontally">
@@ -444,21 +454,16 @@
                 <input style="position:absolute; top:30%" type="checkbox" id="allow_duplicates_checkbox" class="switch">
         </div>
     </div>
-    <br />
-    <div id="win_overlay" class="end_overlay" onclick="hide()">
-        <div class="end_overlay_main">
-            you<br />win!
-            <br />
-            <span style="font-size:30px; color:white">press on the screen to continue</span>
-        </div>
-    </div>
 
-    <div id="lose_overlay" class="end_overlay" onclick="hide()">
-        <div class="end_overlay_main" style="color:red;">
-            you<br />lose!
-            <br />
-            <span style="font-size:30px; color:white">press on the screen to continue</span>
+    <br />
+    <div id="end_overlay" class="end_overlay" onclick="hide()">
+        <div id="end_overlay_main" class="end_overlay_main">
+
         </div>
+
+        <br />
+        <br />
+        <span style="font-size:30px; color:white">press on the screen to continue</span>
     </div>
 
     <script src="js_Bullseye_project.js"></script>
