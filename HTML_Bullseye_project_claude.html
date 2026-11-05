@@ -1,0 +1,508 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="title_img.png"/>
+    <title>
+        Mastermind
+    </title>
+    <style>
+        body {
+            background-image: url("bullseye_background_5.jpg");
+            background-repeat: repeat;
+            background-size: 100vw 100vh;
+            overflow: auto;
+            cursor: default;
+        }
+        #title {
+            color: cyan;
+            text-align: center;
+            font-size: 60px;
+            font-family: "Comic Sans", cursive;
+        }
+        #input {
+            position: fixed;
+            width:fit-content;
+            top:5%;
+            left:0;
+            right:0;
+            margin-inline:auto;
+            z-index: 1;
+            color: white;
+            justify-content: center;
+            align-items: center;
+            font-size: 35px;
+        }
+        .back_button {
+            position: fixed;
+            top: 5%;
+            right:5%;
+            z-index:10;
+            background-image: url("home.jpg");
+            background-size: cover; /* התמונה ממלאת את הכפתור */
+            height: 75px;
+            width: 75px;
+            background-color: white;
+            border-radius:10%;
+            border:2px solid black;
+        }
+        .start_button_container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .start_button {
+            width: 400px;
+            height: 100px;
+            font-size: 50px;
+            border-radius: 12px;
+            font-family: "Comic Sans", cursive;
+            box-shadow: 5px 7px 5px gray;
+            cursor: pointer;
+            display: block;
+            margin:auto;
+        }
+            .start_button:hover {
+                background-color: lightblue;
+                color: darkblue;
+                box-shadow: 5px 7px 10px gray;
+            }
+        #settings_container {
+            position: relative;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #95d5b2;
+            color: #0077b6;
+            font-size: 40px;
+            width: 750px;
+            height: 250px;
+            border:3px solid black;
+            cursor:default;
+        }
+        .container {
+            display: grid;
+            gap: 1em;
+            position: relative;
+            font-size: 40px;
+            min-width:100%;
+            width:max-content;
+            min-height: 50%;
+            overflow:auto;
+        }
+        .range {
+            -webkit-appearance: none;
+            width: 300px;
+            height:15px;
+            border-radius:15px;
+            opacity:0.8;
+            border:1px solid black;
+        }
+        .range:hover{
+            opacity:1;
+        }
+            .range::-webkit-slider-thumb {
+                -webkit-appearance: none;
+                width:30px;
+                height:30px;
+                background: cyan;
+                border-radius:50%;
+                border:1px solid black;
+            }
+        .switch {
+            position: relative;
+            appearance: none;
+            width: 50px;
+            height: 27px;
+            background: gray;
+            border: 1px solid black;
+            border-radius: 26px;
+            transition: 0.2s;
+        }
+            .switch::before {
+                content: "";
+                position: absolute;
+                left: 2px;
+                top: 2px;
+                width: 20px;
+                height: 20px;
+                background: white;
+                border: 1px solid black;
+                border-radius: 50%;
+                transition: 0.2s;
+            }
+        .switch:checked{
+            background:cyan;
+        }
+        .switch:checked::before{
+            transform:translateX(22px)
+        }
+        .row_container {
+            text-align: center;
+            display:inline-block;
+            grid-template-columns: 1fr 1fr;
+            font-size: 70px;
+        }
+        .row_answers {
+            display:inline-block;
+            color: white;
+            font-size: 40px;
+            width:fit-content;
+        }
+        .row_guesses {
+            display: inline-block;
+            color: white;
+            font-size: 70px;
+            width: fit-content;
+        }
+        .select_color {
+            width: 50px;
+            height: 50px;
+            border: 2px solid white;
+            margin-left:10px;
+            border-radius:25%;
+        }
+        .select_color:hover {
+                box-shadow: 0 0 0 8px #00ab41;
+        }
+        .select_color:active{
+            box-shadow:0 0 0 8px green;
+        }
+
+        .selected_color {
+            width: 50px;
+            height: 50px;
+            border: 2px solid white;
+            margin-left: 10px;
+            border-radius: 25%;
+            box-shadow: 0 0 0 8px green;
+        }
+
+/*        .random_button_duplicates_or_not {
+            width: 300px;
+            height: 55px;
+            border-radius: 8px;
+            margin-bottom: 8px;
+            box-shadow: 2.5px 5px rgb(80,80,80);
+            background-color: lightblue;
+            font-size: 35px;
+            color: blue;
+            border: 2px solid black;
+            margin-right: 50px
+        }
+        .random_button_duplicates_or_not:hover {
+            background-color: rgba(173, 216, 230,0.95);
+            box-shadow: 2.5px 4px rgb(80,80,80);
+            transform: translateY(1px)
+        }*/
+        .random_button {
+            min-width:200px;
+            width: fit-content;
+            height: 55px;
+            border-radius: 8px;
+            margin-bottom: 8px;
+            box-shadow: 2.5px 5px rgb(80,80,80);
+            background-color: lightblue;
+            font-size: 35px;
+            color: blue;
+            border: 2px solid black;
+            margin-right: 50px
+        }
+        .random_button:hover {
+            background-color: rgba(173, 216, 230,0.95);
+            box-shadow: 2.5px 4px rgb(80,80,80);
+            transform: translateY(1px)
+        }
+        .manual_button {
+            width: 200px;
+            height: 55px;
+            border-radius: 8px;
+            margin-bottom: 8px;
+            box-shadow: 2.5px 5px rgb(80,80,80);
+            background-color: lightblue;
+            font-size: 35px;
+            color: blue;
+            border: 2px solid black;
+        }
+        .manual_button:hover {
+            background-color: rgba(173, 216, 230,0.95);
+            box-shadow: 2.5px 4px rgb(80,80,80);
+            transform: translateY(1px)
+        }
+        .submit_code {
+            width: 200px;
+            height: 50px;
+            border-radius: 8px;
+            margin-bottom: 8px;
+            box-shadow: 2.5px 5px rgb(80,80,80);
+            background-color: lightblue;
+            font-size: 25px;
+            color: blue;
+            border: 2px solid black;
+        }
+        .submit_code:hover {
+            background-color: rgba(173, 216, 230,0.95);
+            box-shadow: 2.5px 4px rgb(80,80,80);
+            transform: translateY(1px)
+        }
+            #the_code{
+                margin-top:50px;
+                text-align:center;
+                color:white;
+                font-size:50px;
+            }
+        .the_code {
+            background-color: black;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 2px solid white;
+            margin: 4px;
+            font-size:40px;
+        }
+        .the_code_manual {
+            background-color: black;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 2px solid white;
+            margin: 4px;
+            font-size: 40px;
+            box-shadow: 0px 10px rgb(80,80,80);
+        }
+            .the_code_manual:hover {
+                background-color: rgb(80,80,80);
+                box-shadow: 0 9px rgb(80,80,80);
+                transform: translateY(1px);
+            }
+
+            .the_code_manual:active {
+                background-color: rgb(80,80,80);
+                box-shadow: 0 5px rgb(80,80,80);
+                transform: translateY(5px);
+            }
+
+        .button_color {
+            background-color: black;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 2px solid white;
+            margin: 4px;
+            box-shadow: 0px 10px rgb(80,80,80);
+        }
+            .button_color:hover {
+                background-color: rgb(80,80,80);
+                box-shadow: 0 8px rgb(80,80,80);
+                transform: translateY(2px);
+            }
+            .button_color:active {
+                background-color: rgb(80,80,80);
+                box-shadow: 0 5px rgb(80,80,80);
+                transform: translateY(5px);
+            }
+        .button_color_disabled {
+            background-color: black;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 2px solid white;
+            margin: 4px;
+            box-shadow: 0px 10px rgb(80,80,80);
+            opacity:0.6;
+            cursor:not-allowed;
+        }
+        .button_color_used {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 2px solid white;
+            margin: 4px;
+        }
+            .button_submit {
+                width: 150px;
+                height: 50px;
+                border-radius: 8px;
+                margin-bottom: 8px;
+                box-shadow: 2.5px 5px rgb(80,80,80);
+                background-color: lightblue;
+                font-size: 35px;
+                color: blue;
+                border:2px solid black;
+            }
+                .button_submit:hover {
+                    background-color: rgba(173, 216, 230,0.95);
+                    box-shadow: 2.5px 4px rgb(80,80,80);
+                    transform: translateY(1px)
+                }
+        .button_submit_disabled {
+            width: 150px;
+            opacity: 0;
+        }
+        .button_answer {
+            background-color: black;
+            color: white;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            border: 2px solid white;
+            margin-top: 42px;
+            margin-right: 6px;
+            box-shadow: 0px 0px 10px 3px rgb(80,80,80);
+        }
+        .button_play_again {
+            width: 200px;
+            height: 50px;
+            border-radius: 8px;
+            margin-bottom: 8px;
+            box-shadow: 2.5px 5px rgb(80,80,80);
+            background-color: lightblue;
+            font-size: 30px;
+            color: blue;
+            border: 2px solid black;
+        }
+        .end_overlay {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            inset: 0;
+            background-color: rgba(0,0,0,0.6);
+            display: none;
+            cursor: pointer;
+            font-size: 200px;
+            color: blue;
+            text-align: center;
+            z-index: 10;
+        }
+        .end_overlay_main{
+            position:absolute;
+            inset-block:0;
+            width:500px;
+            height:500px;
+            background-color:lightblue;
+            opacity:0.8;
+            text-align:center;
+            position:absolute;
+            top:50px;
+            right:500px;
+        }
+        .center_horizontally {
+            position: absolute;
+            width: 350px;
+            height: 1em;
+            left: 50%;
+            transform: translateX(-45%);
+        }
+        .online_container { /* נוסף: מיכל מסך ההתחברות וההמתנה ליריב */
+            text-align: center; /* נוסף: ממרכז את התוכן */
+            color: white; /* נוסף: טקסט לבן כמו שאר המשחק */
+            font-size: 35px; /* נוסף: גודל הטקסט */
+            margin-bottom: 20px; /* נוסף: רווח מתחת למסך ההתחברות */
+        } /* נוסף: סוף online_container */
+        .online_input { /* נוסף: שדות שם משתמש וסיסמה */
+            font-size: 30px; /* נוסף: גודל הטקסט בשדה */
+            width: 300px; /* נוסף: רוחב השדה */
+            margin: 5px; /* נוסף: רווח בין השדות */
+        } /* נוסף: סוף online_input */
+        .online_status { /* נוסף: שורת ההודעות */
+            margin-top: 10px; /* נוסף: רווח מעל ההודעה */
+            min-height: 1.2em; /* נוסף: שומר מקום כשאין הודעה */
+        } /* נוסף: סוף online_status */
+        .online_turn { /* נוסף: חיווי קבוע של מי התור בזמן משחק */
+            position: fixed; /* נוסף: נשאר במקום גם בגלילה */
+            top: 5%; /* נוסף: גובה בדף */
+            left: 2%; /* נוסף: בצד שמאל כדי לא להסתיר את הפלטה */
+            z-index: 5; /* נוסף: מעל הלוח */
+            color: white; /* נוסף: טקסט לבן */
+            font-size: 30px; /* נוסף: גודל הטקסט */
+            max-width: 25%; /* נוסף: לא תופס יותר מרבע מהמסך */
+        } /* נוסף: סוף online_turn */
+    </style>
+</head>
+<body>
+    <div id="title">
+        Welcome to Neriya's game of Mastermind!
+    </div>
+    <br />
+    <div id="input"></div>
+    <button id="back_button" onclick="build_home()" class="back_button" style="display:none"></button>
+    <br />
+    <div id="start_button_container" class="start_button_container">
+        <button class="start_button" onclick="build_online()"> <!-- נוסף: חיבור כפתור Online לפונקציה build_online -->
+            Online
+        </button>
+        <button id="start_button" class="start_button" onclick="build_bord()">
+            single player
+        </button>
+        <button class="start_button" onclick="choose_bot()">
+            VS bot
+        </button>
+    </div>
+    <br />
+    <div id="online_container" class="online_container" style="display:none"> <!-- נוסף: מסך ההתחברות וההמתנה ליריב (מוסתר עד לחיצה על Online) -->
+        <div id="online_login"> <!-- נוסף: שדות ההתחברות (מוסתרים אחרי שהתחברנו) -->
+            <input id="online_username" class="online_input" placeholder="username" /> <!-- נוסף: שדה שם משתמש -->
+            <input id="online_password" class="online_input" type="password" placeholder="password" /> <!-- נוסף: שדה סיסמה -->
+            <br /> <!-- נוסף: ירידת שורה לפני הכפתור -->
+        </div> <!-- נוסף: סוף שדות ההתחברות -->
+        <button id="online_go_button" class="random_button" style="margin-right:0" onclick="online_go()">login</button> <!-- נוסף: כפתור התחברות / חיפוש יריב -->
+        <div id="online_status" class="online_status"></div> <!-- נוסף: הודעות סטטוס למשתמש -->
+    </div> <!-- נוסף: סוף מסך ההתחברות -->
+    <div id="online_turn" class="online_turn" style="display:none"></div> <!-- נוסף: חיווי קבוע של מי התור בזמן משחק אונליין -->
+    <div id="the_code">
+
+    </div>
+    <br />
+    <br />
+    <div id="container" class="container"></div>
+
+    <div id="settings_container">
+        <div style="position:absolute;left:4%;">
+            <span class="center_horizontally">
+                Number of tries: <span id="tries_range_value_display" style="color: #283618">10</span>
+            </span>
+            <br />
+            <input type="range" id="tries_range" class="range" min="1" max="20" value="10"
+                   oninput="update_slider_display(this,document.getElementById('tries_range_value_display'))">
+        </div>
+        <div style="position:absolute;left:55%;">
+            <span class="center_horizontally"style="transform:translateX(-35%)">
+                Code length: <span id="length_range_value_display" style="color: #283618">4</span>
+                </span>
+                <br />
+                <input type="range" id="length_range" class="range" min="1" max="8" value="4"
+                       oninput="update_slider_display(this,document.getElementById('length_range_value_display'))">
+            </div>
+        <div style="position: absolute; left: 50%; transform: translateX(-50%); top: 100px">
+            <span class="center_horizontally"style="transform:translateX(-47%)">
+                Number of colors: <span id="number_colors_range_value_display" style="color: #283618">8</span>
+            </span>
+            <br />
+            <input type="range" id="number_colors_range" class="range" min="1" max="10" value="8"
+                   oninput="update_slider_display(this,document.getElementById('number_colors_range_value_display'))">
+        </div>
+        <br />
+        <div style="position:absolute;bottom:10px; width:fit-content;display:inline-block;">
+            Allow duplicates
+                <input style="position:absolute; top:30%" type="checkbox" id="allow_duplicates_checkbox" class="switch">
+        </div>
+    </div>
+
+    <br />
+    <div id="end_overlay" class="end_overlay" onclick="hide()">
+        <div id="end_overlay_main" class="end_overlay_main">
+
+        </div>
+
+        <br />
+        <br />
+        <span style="font-size:30px; color:white">press on the screen to continue</span>
+    </div>
+
+    <script src="js_Bullseye_project_claude.js"></script> <!-- נוסף: טוען את קובץ ה-JS החדש (עם קוד האונליין) -->
+</body>
+</html>
