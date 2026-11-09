@@ -669,7 +669,8 @@ function choose_bot() {
 
     num_color_bot = number_colors;
 
-    create_bot_array();
+    if(create_bot_array())
+        return;
 
     //מגלה את כפתור החזור
     back_button_div.style.display = "";
@@ -689,7 +690,7 @@ function create_bot_array() {
     if (allow_duplicates) {
         if (code_length >= 8 && num_color_bot >= 9) {
             show_error("too many colors")
-            return
+            return false;
         }
         bot_create_array_duplicates();
     }
@@ -698,8 +699,9 @@ function create_bot_array() {
 
     if (!allow_duplicates && code_length > number_colors) {
         show_error("Not enough colors to fill the code")
-        return;
+        return false;
     }
+    return true;
 }
 
 function bot_build_bord(is_game_competition) {
