@@ -669,7 +669,7 @@ function choose_bot() {
 
     num_color_bot = number_colors;
 
-    if(create_bot_array())
+    if(!create_bot_array())
         return;
 
     //מגלה את כפתור החזור
